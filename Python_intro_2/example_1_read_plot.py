@@ -9,9 +9,10 @@ import csv
 def read_data(datafile):
     """
     Read year and temperature data from CSV file.
-    Data is returned in two separate lists.
+    Data is returned in two separate lists: "year" and "temp".
     """
     
+    ## Create empty lists
     year = []
     temp = []
 
@@ -33,9 +34,9 @@ def read_data(datafile):
 
 #############################
 
+
 def lineplot(year, temp, unit='degC'):
     """Plot temperature as function of time"""
-
     
     plt.plot(year, temp, '-k')
 
