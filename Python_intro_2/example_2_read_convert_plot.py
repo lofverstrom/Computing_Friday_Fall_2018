@@ -8,33 +8,6 @@ from temperature_converter import *
 
 ###########################
 
-def read_data(datafile):
-    """
-    Read year and temperature data from CSV file.
-    Data is returned in two separate lists.
-    """
-    
-    year = []
-    temp = []
-
-    with open(datafile) as inf:
-
-        for line in inf:
-
-            parts = line.split(',')
-
-            year.append(int(parts[0]))
-
-            try:
-                temp.append(float(parts[1]))
-            except: 
-                temp.append(None)
-
-    return year, temp
-
-
-
-
 def read_data_convert(datafile, convert=False, 
                       unit_in='degF', unit_out='degC'):
 
@@ -107,60 +80,6 @@ def read_data_convert(datafile, convert=False,
 
 
 
-
-def write_data(time, temperature, unit='degC', outfile=None):
-    """
-    Write data to CSV file 
-    """
-
-    if outfile is not None:
-        outfile = outfile
-    else:
-        outfile = 'data/mock_timeseries_temp_%s.csv'%unit
-
-
-    ndec = 3 ## Number of decimals to write
-
-    write_to_file = True ## Set automatically in script
-
-    with open(outfile, mode='w') as ofile:
-        write_2_file = csv.writer(ofile, 
-                                  delimiter=',', 
-                                  quotechar='"', 
-                                  quoting=csv.QUOTE_MINIMAL)
-    
-
-        for ii in range(len(time)):
-            if unit == 'degC':
-                try: 
-                    temp = float(temperature[ii])
-                    write_to_file = True
-                except: pass
-
-
-            elif unit == 'K':
-                try: 
-                    temp = C2K(float(temperature[ii]))
-                    write = True                    
-                except: write_to_file = False
-
-
-            elif unit == 'degF':
-                try:
-                    temp = C2F(float(temperature[ii]))
-                    write_to_file = True
-                except: write_to_file = False
-
-            else: 
-                print('\nOBS!! unit "%s" is not supported!'%unit)
-                print('Will not change unit\n')
-
-
-            if write_to_file: 
-                write_2_file.writerow([time[ii], round(temp,ndec)])
-
-
-
 #############################
 
 def lineplot(year, temp, unit='degC'):
@@ -210,16 +129,13 @@ if __name__ == "__main__":
     dataFile = '%s/fake_timeseries_temp_%s.csv'%(dataPath, unit)
 
 
-    year, temp = read_data(dataFile)
-
-#    year, temp, unit = read_data_convert(dataFile, convert=True,
-#                                         unit_in=unit, unit_out='K')
+    year, temp, unit = read_data_convert(dataFile, convert=True,
+                                         unit_in=unit, unit_out='K')
 
 
 
     lineplot(year, temp, unit=unit)
     
-
 
 #############################
 ### === END OF SCRIPT === ###
