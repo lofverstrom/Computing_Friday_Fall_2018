@@ -13,7 +13,7 @@ from temperature_converter import K2C
 def plot_field_basic(lat, lon, var):
 
     ## Set map project
-    m = Basemap(projection=proj,
+    m = Basemap(projection='cyl',
                 llcrnrlat=-90,
                 urcrnrlat=90,
                 llcrnrlon=0,
@@ -132,13 +132,13 @@ if __name__ == "__main__":
     ###
 
     ## Exempel 1
-#    plot_field_basic(lat, lon, TS[0,:,:])
+    plot_field_basic(lat, lon, TS[0,:,:])
 
 
     ## Exempel 2
 #    proj = 'cyl'
 #    proj = 'ortho'
-#    plot_field_slightly_more_advance(lat, lon, TS[0,:,:], proj=proj)
+#    plot_field_slightly_more_advanced(lat, lon, TS[0,:,:], proj=proj)
 
 #############################
 ### === END OF SCRIPT === ###
