@@ -5,7 +5,7 @@ from netCDF4 import Dataset
 #############################
 
 def netcdf_get_var(datafile, field):
-    """Read netCDF file"""
+    """Read variable from netCDF file"""
     dd = Dataset(datafile, 'r')
     var = dd.variables[field]
     return var
@@ -26,7 +26,8 @@ if __name__ == "__main__":
 
     netcdf_list_keys(datafile)
 
-    lat = netcdf_get_var(datafile, 'lat')
+    field = 'lat'
+    lat = netcdf_get_var(datafile, field)
 
     ## Print metadata
     print(lat)
