@@ -21,8 +21,7 @@ def netcdf_list_keys(datafile):
 
 if __name__ == "__main__":
 
-    datapath = '../data'
-    datafile = '%s/TS_FV2_ANN.nc'%(datapath)
+    datafile = '../data/TS_FV2_ANN.nc'
 
     netcdf_list_keys(datafile)
 
