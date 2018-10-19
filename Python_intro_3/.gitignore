@@ -1,0 +1,8 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*$py.class
+*~
+read_netCDF.py
