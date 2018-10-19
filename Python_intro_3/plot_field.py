@@ -18,7 +18,7 @@ def plot_field_basic(lat, lon, var):
                 urcrnrlat=90,
                 llcrnrlon=0,
                 urcrnrlon=360,
-                resolution='l')
+                resolution='c')
 
 
     ## Set no color levels
@@ -27,6 +27,7 @@ def plot_field_basic(lat, lon, var):
     ## Make plot
     ## This syntax is potentially dangerous; 
     ## for better practice, see example 2
+
     lons, lats = np.meshgrid(lon, lat)
     cf = m.contourf(lons, lats, var, levels)
 
@@ -120,14 +121,14 @@ if __name__ == "__main__":
 
 #    netcdf_list_keys(datafile)
     
-#    lat = netcdf_get_var(datafile, 'lat')
-#    lon = netcdf_get_var(datafile, 'lon')
+    lat = netcdf_get_var(datafile, 'lat')
+    lon = netcdf_get_var(datafile, 'lon')
 
-#    TS = netcdf_get_var(datafile, 'TS')
+    TS = netcdf_get_var(datafile, 'TS')
 
 #    print(type(TS))
 
-#    TS = K2C(TS)
+    TS = K2C(TS)
 
 #    print(np.shape(TS))
 
@@ -138,9 +139,9 @@ if __name__ == "__main__":
 
 
     ## Exempel 2
-#    proj = 'cyl'
+    proj = 'cyl'
 #    proj = 'ortho'
-#    plot_field_slightly_more_advanced(lat, lon, TS[0,:,:], proj=proj)
+    plot_field_slightly_more_advanced(lat, lon, TS[0,:,:], proj=proj)
 
 #############################
 ### === END OF SCRIPT === ###
