@@ -12,7 +12,7 @@ from temperature_converter import K2C
 
 def plot_field_basic(lat, lon, var):
 
-    ## Set map project
+    ## Set map projection
     m = Basemap(projection='cyl',
                 llcrnrlat=-90,
                 urcrnrlat=90,
@@ -25,8 +25,8 @@ def plot_field_basic(lat, lon, var):
     levels = 10
 
     ## Make plot
-    ## This is potentially dangerous; 
-    ## see better practice in example 2
+    ## This syntax is potentially dangerous; 
+    ## for better practice, see example 2
     lons, lats = np.meshgrid(lon, lat)
     cf = m.contourf(lons, lats, var, levels)
 
@@ -42,6 +42,8 @@ def plot_field_basic(lat, lon, var):
 
 
 def plot_field_slightly_more_advanced(lat, lon, var, proj='ortho'):
+
+    ## Set map projection
 
     if proj == 'ortho':
         plt.title("Full Disk Orthographic Projection")
@@ -118,12 +120,12 @@ if __name__ == "__main__":
 
 #    netcdf_list_keys(datafile)
     
-    lat = netcdf_get_var(datafile, 'lat')
-    lon = netcdf_get_var(datafile, 'lon')
+#    lat = netcdf_get_var(datafile, 'lat')
+#    lon = netcdf_get_var(datafile, 'lon')
 
-    TS = netcdf_get_var(datafile, 'TS')
+#    TS = netcdf_get_var(datafile, 'TS')
 
-    print(type(TS))
+#    print(type(TS))
 
 #    TS = K2C(TS)
 
@@ -132,7 +134,7 @@ if __name__ == "__main__":
     ###
 
     ## Exempel 1
-    plot_field_basic(lat, lon, TS[0,:,:])
+#    plot_field_basic(lat, lon, TS[0,:,:])
 
 
     ## Exempel 2
